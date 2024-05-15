@@ -1,8 +1,8 @@
 FROM rust:1.67
 
-WORKDIR /usr/src/myapp
+WORKDIR /usr/src/app
 COPY . .
 
 RUN cargo install --path .
 
-CMD ["cargo run"]
+CMD ["cargo", "run"]

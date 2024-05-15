@@ -6,11 +6,13 @@ use std::{
     io::BufReader,
     net::{TcpListener, TcpStream},
     thread,
+    env
 };
 
 fn main() {
-    let listner = TcpListener::bind("127.0.0.1:7878").unwrap();
-    println!("Listening On: http://127.0.0.1:7878");
+    let address = env::var("ADDRESS").unwrap_or("127.0.0.1:7878".to_string());
+    let listner = TcpListener::bind(address.to_string()).unwrap();
+    println!("Listening On: {address}");
     let pool = ThreadPool::build(2);
     // TODO thread pool with event loop
     for stream in listner.incoming() {
