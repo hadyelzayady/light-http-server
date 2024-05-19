@@ -1,0 +1,8 @@
+#!/usr/bin/zsh
+
+source ~/.config/zsh/.zshenv
+
+docker build . -t hadyelzayady1996/light-http-server:latest && docker push hadyelzayady1996/light-http-server:latest
+
+kitten ssh admin@$LIGHT_APP_EC2_URL -t "cd services && docker compose pull && docker compose up -d"
+
