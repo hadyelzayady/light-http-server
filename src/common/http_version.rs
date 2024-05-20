@@ -22,7 +22,7 @@ impl FromStr for HttpVersion {
         match s {
             "HTTP/1.1" => Ok(HttpVersion::HTTP1_1),
             "HTTP/2" => Ok(HttpVersion::HTTP2),
-            _ => Err(InvalidHttpVersion::new()),
+            _ => Ok(HttpVersion::HTTP1_1),
         }
     }
 

@@ -10,7 +10,7 @@ use std::{
 };
 
 fn main() {
-    let address = env::var("ADDRESS").unwrap_or("127.0.0.1:7878".to_string());
+    let address = env!("ADDRESS");
     let listner = TcpListener::bind(address.to_string()).unwrap();
     println!("Listening On: {address}");
     let pool = ThreadPool::build(2);
